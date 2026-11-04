@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Aleris | Teknofest UAV Engineering</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+        header { background: #003366; color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid #00509e; }
+        header h1 { margin: 0; font-size: 2.5em; }
+        .container { max-width: 900px; margin: 30px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        ul { margin-left: 20px; }
+        li { margin-bottom: 10px; }
+        footer { text-align: center; padding: 20px; margin-top: 20px; font-size: 0.9em; color: #777; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Team Aleris</h1>
+    <p>Teknofest UAV Engineering</p>
+</header>
+
+<div class="container">
+    <p>Team Aleris is engineering a highly capable, autonomous platform for the Teknofest UAV competition. Our custom-designed VTOL QuadPlane or traditional Fixed-Wing aircraft is built to meet the strict maximum take-off weight (MTOW) limit of 4 kg, including the payload[cite: 2].</p>
+
+    <h2>Hardware & Avionics Architecture</h2>
+    <p>Our aircraft integrates a lightweight 3D-printed modular nose for avionics with a carbon fiber and foam core wing structure[cite: 2]. To ensure rapid deployment, the airframe utilizes quick-release wing connectors equipped with integrated Pogo pins for servos[cite: 2].</p>
+    <ul>
+        <li><strong>Primary Flight Controller:</strong> A Pixhawk flight controller serves as the low-level real-time brain of the aircraft, executing high-speed PID control loops and hardware-level emergencies like automatic fail-safe modes[cite: 2]. It is mounted at the center of gravity on vibration-damping foam[cite: 2].</li>
+        <li><strong>Companion Computer:</strong> A Raspberry Pi 5 runs Ubuntu Linux, ROS 2, and OpenCV to process video feeds, recognize ground targets, and send high-level navigational commands to the Pixhawk[cite: 2].</li>
+        <li><strong>Sensors and Telemetry:</strong> A downward-facing LiDAR measures the exact distance to the ground, strictly enforcing the 120-meter altitude limit and calculating payload drop trajectories[cite: 2]. A pitot tube measures airspeed to prevent aerodynamic stalls[cite: 2]. A single vision camera is utilized to detect the specific colors and shapes of payload targets on the ground[cite: 2].</li>
+        <li><strong>Emergency Safety Systems:</strong> A heavy-duty Solid State Relay (SSR) or MOSFET is wired in series with the main battery, controlled by a physical exterior toggle switch that instantly cuts all power to motors and avionics within a 2-second limit[cite: 2].</li>
+    </ul>
+
+    <h2>Software Stack</h2>
+    <ul>
+        <li><strong>Operating System & Middleware:</strong> The Raspberry Pi 5 operates on Ubuntu Linux (22.04 or 24.04) and utilizes ROS 2 (Robot Operating System 2) to provide a distributed, node-based architecture[cite: 2].</li>
+        <li><strong>Flight Stack & Communication:</strong> The Pixhawk runs ArduPilot (ArduPlane)[cite: 2]. MAVROS translates ROS 2 topics from the companion computer into MAVLink serial protocol messages that the Pixhawk can understand[cite: 2].</li>
+        <li><strong>Computer Vision:</strong> We utilize a highly optimized C++ OpenCV vision pipeline to process camera frames rapidly, ensuring the payload release command is mathematically deterministic and triggered at the exact right millisecond[cite: 2].</li>
+    </ul>
+
+    <h2>Competition Objectives</h2>
+    <ul>
+        <li><strong>Mission 1:</strong> The UAV must be fully assembled and ready to fly within an 8-minute limit[cite: 2]. It takes off autonomously and executes two continuous horizontal figure-8 (∞) maneuvers around reference poles spaced approximately 150 meters apart[cite: 2].</li>
+        <li><strong>Mission 2:</strong> The UAV carries two payloads and utilizes a single camera to detect randomly placed ground targets[cite: 2]. A red payload must be dropped onto a 4x4 meter blue square target, and a blue payload onto a 2x2 meter red square target[cite: 2].</li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2026 Team Aleris. Built for Teknofest.
+</footer>
+
+</body>
+</html>
